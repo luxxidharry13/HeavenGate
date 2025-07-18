@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./Asset/css/contact.css">
-    <title>Document</title>
+       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer"/>   
+    <title>Contact</title>
 </head>
 <body>
-    <header class="header">
+   <header class="header">
         <div class="logocontainer">
             <img src="./Asset/images/logo-removebg-preview.png">
             <h1>Heaven<span class="red">Gate</span></h1>
@@ -16,68 +17,101 @@
             &#9776;
         </button>
         <nav class="navbar">
-            <a href="#" class="navlink">Home</a>
-            <a href="#" class="navlink">About</a>
-            <a href="#" class="navlink">Properties</a>
-            <a href="#" class="navlink">Contact</a>
-            <a href="#" class="navlink">Login</a>
+            <a href="./index.html" class="navlink">Home</a>
+            <a href="./about.html" class="navlink">About</a>
+            <a href="./properties.html" class="navlink">Properties</a>
+            <a href="./contact.html" class="navlink">Contact</a>
+            <a href="./login.html" class="navlink">Login</a>
         </nav>
     </header>
-      <div class="container">
-    <div class="left"></div>
-    <div class="right">
 
-      <div class="header-nav">
-        <strong>Heaven Gate</strong>
-        
-      </div>
+    <div class="container">
+        <div class="left"></div>
+        <div class="right">
+         
+            
+            <h1>Contact Us</h1>
+            
+            <div class="info1">
+                <h4><i class="fas fa-calendar-alt" ></i>Tourist Visits</h4>
+                <p><i class="fas fa-clock" ></i>Tuesday — Saturday<br>9:00 am — 5:00 pm PST</p>
+                <p><i class="fas fa-envelope"></i>heavengate@hotmail.com</p>
+                <p><i class="fas fa-phone" ></i>200-429-0000<br>200-429-1222</p>
+            </div>
 
-      <h1>Contact</h1>
+            <div class="info">
+                <p><i class="fas fa-info-circle" ></i>
+                The HeavenGate Estate, which owns and operates the luxury properties, also makes select venues available for limited commercial photography and film shoots. Experience the epitome of luxury living.</p>
+            </div>
 
-      <div class="info1">
-        <h4>Tourist Visits</h4>
-        <p>Tuesday — Saturday<br>9:00 am — 5:00 pm PST</p>
-        <p>heavengate@hotmail.com</p>
-        <p>200-429-0000<br>200-429-1222</p>
-      </div>
+            <div class="form">
+                <h4><i class="fas fa-paper-plane" ></i>Commercial Requests</h4>
+                
+                <label for="fullname">Full Name</label>
+                <input type="text" id="fullname" placeholder="Enter your full name" required>
 
-      <div class="info">
-        <p>The HeavenGate, which owns and operates the HG, also makes the property available for limited commercial photography and film shoots.</p>
-      </div>
+                <label for="email">Email Address</label>
+                <input type="email" id="email" placeholder="Enter your email address" required>
 
-      <div class="form">
-        <h4>Commercial Requests</h4>
-        <label for="fullname">Full Name</label>
-        <input type="text" id="fullname" placeholder="Your full name">
+                <label for="message">Message</label>
+                <textarea id="message" rows="4" placeholder="Tell us about your project or inquiry..." required></textarea>
 
-        <label for="email">Email</label>
-        <input type="email" id="email" placeholder="Your email">
-
-        <label for="message">Message</label>
-        <textarea id="message" rows="4" placeholder="Type your message"></textarea>
-
-        <button type="button" onclick="alert('Request submitted successfully!')">SUBMIT REQUEST</button>
-      </div>
-
+                <button type="button" onclick="submitForm()">
+                    <i class="fas fa-paper-plane" style="margin-right: 0.5rem;"></i>
+                    Submit Request
+                </button>
+            </div>
+        </div>
     </div>
-  </div>
+
     <script>
         // Navbar toggle functionality
-const navbar = document.querySelector(".navbar");
-const navtogglebtn = document.querySelector(".navtogglebtn");
+        const navbar = document.querySelector(".navbar");
+        const navtogglebtn = document.querySelector(".navtogglebtn");
 
-navtogglebtn.addEventListener("click", () => {
-  navbar.classList.toggle("showNav");
-});
+        navtogglebtn.addEventListener("click", () => {
+            navbar.classList.toggle("showNav");
+        });
 
-// Close navbar when clicking on a nav link (for mobile)
-const navlinks = document.querySelectorAll(".navlink");
-navlinks.forEach((link) => {
-  link.addEventListener("click", () => {
-    navbar.classList.remove("showNav");
-  });
-});
+        // Close navbar when clicking on a nav link (for mobile)
+        const navlinks = document.querySelectorAll(".navlink");
+        navlinks.forEach((link) => {
+            link.addEventListener("click", () => {
+                navbar.classList.remove("showNav");
+            });
+        });
 
+        // Form submission
+        function submitForm() {
+            const fullname = document.getElementById('fullname').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+
+            if (!fullname || !email || !message) {
+                alert('Please fill in all fields before submitting.');
+                return;
+            }
+
+         
+
+            // Success animation
+            const button = document.querySelector('.form button');
+            const originalText = button.innerHTML;
+            button.innerHTML = '<i class="fas fa-check" style="margin-right: 0.5rem;"></i>Request Submitted!';
+            button.style.background = 'linear-gradient(135deg, #28a745, #20c997)';
+            
+            setTimeout(() => {
+                button.innerHTML = originalText;
+                button.style.background = 'var(--gradient)';
+                
+                // Clear form
+                document.getElementById('fullname').value = '';
+                document.getElementById('email').value = '';
+                document.getElementById('message').value = '';
+            }, 3000);
+        }
+
+        
     </script>
 </body>
 </html>
